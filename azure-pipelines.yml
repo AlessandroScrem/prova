@@ -7,7 +7,6 @@ jobs:
 - job: Linux
   pool:
     vmImage: ubuntu-latest
-    name: Home Pool
     demands:
       - cmake
       
