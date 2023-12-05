@@ -1,15 +1,22 @@
 # Starter pipeline
+
 trigger:
-- main
+  - main
 
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+jobs:
+- job: Linux
+  pool:
+    vmImage: ubuntu-latest
+    name: Home Pool
+    demands:
+      - cmake
+      
+  steps:
+  - task: CMake@1
+    displayName: 'CMake ..'
+    inputs:
+      cmakeArgs: '..'
+  - task: CMake@1
+    displayName: 'CMake --build . --config Debug'
+    inputs:
+      cmakeArgs: '--build . --config Debug'
