@@ -7,8 +7,6 @@ jobs:
 - job: Linux
   pool:
     vmImage: ubuntu-latest
-    demands:
-      - cmake
       
   steps:
   - task: CMake@1
